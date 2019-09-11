@@ -10,11 +10,21 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var canvas: CanvasViewController!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        canvas.isMultipleTouchEnabled = false
     }
 
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
 
+    @IBAction func clearButton(_ sender: UIButton) {
+        canvas.clearCanvas()
+    }
+    
 }
 
