@@ -10,7 +10,7 @@ import UIKit
 
 class CanvasViewController: UIView {
 
-    var paintingBrushColor = UIColor.white
+    var paintingBrushColor = UIColor.red
     var paintingBrushWidth: CGFloat = 8
     var paintingPath: UIBezierPath!
     var beginPoint: CGPoint!
@@ -35,6 +35,9 @@ class CanvasViewController: UIView {
         shapeLayer.strokeColor = paintingBrushColor.cgColor
         shapeLayer.lineWidth = paintingBrushWidth
         shapeLayer.fillColor = UIColor.clear.cgColor
+        
+        shapeLayer.lineCap = CAShapeLayerLineCap.round
+        
         layer.addSublayer(shapeLayer)
         setNeedsDisplay()
     }

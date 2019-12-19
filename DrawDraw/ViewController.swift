@@ -24,7 +24,8 @@ class ViewController: UIViewController {
     
     @IBAction func saveButton(_ sender: UIButton) {
 //        takeScreenshot()
-        test()
+//        test()
+        test2()
     
     }
     
@@ -54,6 +55,36 @@ class ViewController: UIViewController {
         })
            let activityViewController = UIActivityViewController(activityItems: [image], applicationActivities: nil)
            present(activityViewController, animated: true, completion: nil)
+        
+        
+    }
+    
+    func test2() {
+        
+        UIGraphicsBeginImageContextWithOptions(canvas.frame.size, true, 0)
+        canvas.drawHierarchy(in: canvas.bounds, afterScreenUpdates: true)
+        let shareImage = UIGraphicsGetImageFromCurrentImageContext()
+        
+        UIGraphicsEndImageContext()
+        
+        let activityViewController = UIActivityViewController(activityItems: [shareImage!], applicationActivities: [])
+        activityViewController.excludedActivityTypes = [.assignToContact, .addToReadingList, .openInIBooks, .markupAsPDF, .postToVimeo, .postToWeibo, .postToFlickr, .postToTwitter]
+        
+        self.present(activityViewController, animated: true, completion: nil)
+        
+        // MARK: Activity Controller Completion Handler with Alert
+        activityViewController.completionWithItemsHandler = { activity, completed, items, error in
+            if !completed {
+                // handle task not completed
+                print(error ?? "user canceled sharing")
+                return
+            }
+            let activityText: [String] = (activity?.rawValue.components(separatedBy: "."))!
+            let controller = UIAlertController(title: "Successed!", message: "Successfully shared by \"\(activityText[activityText.count - 1])\"", preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+            controller.addAction(action)
+            self.present(controller, animated: true, completion: nil)
+        }
         
         
     }
