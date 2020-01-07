@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1638B79A23BE461400D0C11A /* PaintingBrush.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1638B79923BE461400D0C11A /* PaintingBrush.swift */; };
+		16CA755723C4683B00E9F918 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CA755623C4683B00E9F918 /* SceneDelegate.swift */; };
 		16CAECB02328E00300C6F33D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CAECAF2328E00300C6F33D /* AppDelegate.swift */; };
 		16CAECB22328E00300C6F33D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CAECB12328E00300C6F33D /* ViewController.swift */; };
 		16CAECB52328E00300C6F33D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16CAECB32328E00300C6F33D /* Main.storyboard */; };
@@ -18,6 +19,7 @@
 
 /* Begin PBXFileReference section */
 		1638B79923BE461400D0C11A /* PaintingBrush.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaintingBrush.swift; sourceTree = "<group>"; };
+		16CA755623C4683B00E9F918 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		16CAECAC2328E00300C6F33D /* DrawDraw.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DrawDraw.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		16CAECAF2328E00300C6F33D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		16CAECB12328E00300C6F33D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -43,6 +45,7 @@
 			isa = PBXGroup;
 			children = (
 				16CAECAF2328E00300C6F33D /* AppDelegate.swift */,
+				16CA755623C4683B00E9F918 /* SceneDelegate.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -149,6 +152,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16CA755723C4683B00E9F918 /* SceneDelegate.swift in Sources */,
 				1638B79A23BE461400D0C11A /* PaintingBrush.swift in Sources */,
 				16CAECB22328E00300C6F33D /* ViewController.swift in Sources */,
 				16CAECC22328E4CA00C6F33D /* CanvasViewController.swift in Sources */,

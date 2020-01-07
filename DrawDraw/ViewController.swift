@@ -18,9 +18,9 @@ class ViewController: UIViewController {
         canvas.isMultipleTouchEnabled = false
     }
 
-//    override var prefersStatusBarHidden: Bool {
-//        return true
-//    }
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
     
     @IBAction func changeColor(_ sender: UIButton) {
         canvas.paintingColor = .red
