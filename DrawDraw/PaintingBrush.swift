@@ -7,3 +7,19 @@
 //
 
 import Foundation
+import UIKit
+
+enum PaintingBrushColor {
+    
+    case red
+    case black
+    
+    var color: UIColor {
+        switch self {
+        case .red:
+            return UIColor.red
+        case .black:
+            return UIColor.black
+        }
+    }
+}

@@ -39,6 +39,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		16CA753523C45D1E00E9F918 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				16CAECAF2328E00300C6F33D /* AppDelegate.swift */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		16CAECA32328E00300C6F33D = {
 			isa = PBXGroup;
 			children = (
@@ -58,7 +66,7 @@
 		16CAECAE2328E00300C6F33D /* DrawDraw */ = {
 			isa = PBXGroup;
 			children = (
-				16CAECAF2328E00300C6F33D /* AppDelegate.swift */,
+				16CA753523C45D1E00E9F918 /* Supporting Files */,
 				16CAECB12328E00300C6F33D /* ViewController.swift */,
 				16CAECC12328E4CA00C6F33D /* CanvasViewController.swift */,
 				1638B79923BE461400D0C11A /* PaintingBrush.swift */,
@@ -221,7 +229,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -276,7 +284,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -300,7 +308,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.Lacie.DrawDraw;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -318,7 +326,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.Lacie.DrawDraw;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

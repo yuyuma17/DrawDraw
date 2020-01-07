@@ -22,6 +22,10 @@ class ViewController: UIViewController {
         return .lightContent
     }
     
+    @IBAction func changeColor(_ sender: UIButton) {
+        canvas.paintingColor = .red
+    }
+    
     @IBAction func saveButton(_ sender: UIButton) {
 //        takeScreenshot()
 //        test()
