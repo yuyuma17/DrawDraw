@@ -8,18 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		1638B79A23BE461400D0C11A /* PaintingBrush.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1638B79923BE461400D0C11A /* PaintingBrush.swift */; };
-		16CA755723C4683B00E9F918 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CA755623C4683B00E9F918 /* SceneDelegate.swift */; };
+		16613BEA23C56D7400760F2E /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16613BE923C56D7400760F2E /* UIView+Ext.swift */; };
+		16613BED23C57C9E00760F2E /* TestCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16613BEC23C57C9E00760F2E /* TestCollectionViewCell.swift */; };
 		16CAECB02328E00300C6F33D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CAECAF2328E00300C6F33D /* AppDelegate.swift */; };
 		16CAECB22328E00300C6F33D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CAECB12328E00300C6F33D /* ViewController.swift */; };
 		16CAECB52328E00300C6F33D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16CAECB32328E00300C6F33D /* Main.storyboard */; };
 		16CAECB72328E00400C6F33D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16CAECB62328E00400C6F33D /* Assets.xcassets */; };
 		16CAECBA2328E00400C6F33D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16CAECB82328E00400C6F33D /* LaunchScreen.storyboard */; };
-		16CAECC22328E4CA00C6F33D /* CanvasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CAECC12328E4CA00C6F33D /* CanvasViewController.swift */; };
+		16CAECC22328E4CA00C6F33D /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CAECC12328E4CA00C6F33D /* CanvasView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1638B79923BE461400D0C11A /* PaintingBrush.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaintingBrush.swift; sourceTree = "<group>"; };
-		16CA755623C4683B00E9F918 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		16613BE923C56D7400760F2E /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
+		16613BEC23C57C9E00760F2E /* TestCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCollectionViewCell.swift; sourceTree = "<group>"; };
 		16CAECAC2328E00300C6F33D /* DrawDraw.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DrawDraw.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		16CAECAF2328E00300C6F33D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		16CAECB12328E00300C6F33D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -27,7 +29,7 @@
 		16CAECB62328E00400C6F33D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		16CAECB92328E00400C6F33D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		16CAECBB2328E00400C6F33D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		16CAECC12328E4CA00C6F33D /* CanvasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasViewController.swift; sourceTree = "<group>"; };
+		16CAECC12328E4CA00C6F33D /* CanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,11 +43,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		16613BE823C4876700760F2E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				16CAECB32328E00300C6F33D /* Main.storyboard */,
+				16613BEC23C57C9E00760F2E /* TestCollectionViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		16613BEB23C56D7B00760F2E /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				16613BE923C56D7400760F2E /* UIView+Ext.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		16CA753523C45D1E00E9F918 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
 				16CAECAF2328E00300C6F33D /* AppDelegate.swift */,
-				16CA755623C4683B00E9F918 /* SceneDelegate.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -69,11 +87,12 @@
 		16CAECAE2328E00300C6F33D /* DrawDraw */ = {
 			isa = PBXGroup;
 			children = (
-				16CA753523C45D1E00E9F918 /* Supporting Files */,
 				16CAECB12328E00300C6F33D /* ViewController.swift */,
-				16CAECC12328E4CA00C6F33D /* CanvasViewController.swift */,
+				16CAECC12328E4CA00C6F33D /* CanvasView.swift */,
 				1638B79923BE461400D0C11A /* PaintingBrush.swift */,
-				16CAECB32328E00300C6F33D /* Main.storyboard */,
+				16613BE823C4876700760F2E /* View */,
+				16613BEB23C56D7B00760F2E /* Extension */,
+				16CA753523C45D1E00E9F918 /* Supporting Files */,
 				16CAECB62328E00400C6F33D /* Assets.xcassets */,
 				16CAECB82328E00400C6F33D /* LaunchScreen.storyboard */,
 				16CAECBB2328E00400C6F33D /* Info.plist */,
@@ -152,10 +171,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				16CA755723C4683B00E9F918 /* SceneDelegate.swift in Sources */,
+				16613BED23C57C9E00760F2E /* TestCollectionViewCell.swift in Sources */,
 				1638B79A23BE461400D0C11A /* PaintingBrush.swift in Sources */,
 				16CAECB22328E00300C6F33D /* ViewController.swift in Sources */,
-				16CAECC22328E4CA00C6F33D /* CanvasViewController.swift in Sources */,
+				16613BEA23C56D7400760F2E /* UIView+Ext.swift in Sources */,
+				16CAECC22328E4CA00C6F33D /* CanvasView.swift in Sources */,
 				16CAECB02328E00300C6F33D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -305,6 +325,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LNL6T3MTH9;
 				INFOPLIST_FILE = DrawDraw/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -312,7 +333,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.Lacie.DrawDraw;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -323,6 +344,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LNL6T3MTH9;
 				INFOPLIST_FILE = DrawDraw/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -330,7 +352,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.Lacie.DrawDraw;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

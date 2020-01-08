@@ -1,5 +1,5 @@
 //
-//  CanvasViewController.swift
+//  CanvasView.swift
 //  DrawDraw
 //
 //  Created by 黃士軒 on 2019/9/11.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CanvasViewController: UIView {
+class CanvasView: UIView {
 
     var paintingColor = PaintingBrushColor.black
     

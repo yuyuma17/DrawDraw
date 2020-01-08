@@ -10,57 +10,38 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var canvas: CanvasViewController!
+    @IBOutlet weak var buttomView: UIView!
+    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var canvas: CanvasView!
+    @IBOutlet weak var selectBrushColorButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         canvas.isMultipleTouchEnabled = false
+        view.setViewWithBorderAndCircle(selectBrushColorButton)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        if buttomView.frame.height == 896 || buttomView.frame.height == 812 {
+            buttomView.layer.cornerRadius = 40
+        } else {
+            buttomView.layer.cornerRadius = 20
+        }
     }
 
     override var prefersStatusBarHidden: Bool {
         return true
     }
     
-    @IBAction func changeColor(_ sender: UIButton) {
-        canvas.paintingColor = .red
-    }
-    
     @IBAction func saveButton(_ sender: UIButton) {
-//        takeScreenshot()
-//        test()
         test2()
-    
     }
     
     @IBAction func clearButton(_ sender: UIButton) {
         canvas.clearCanvas()
-    }
-    
-    func takeScreenshot(_ shouldSave: Bool = true) {
-        var screenshotImage :UIImage?
-        let layer = UIApplication.shared.keyWindow!.layer
-        let scale = UIScreen.main.scale
-        UIGraphicsBeginImageContextWithOptions(layer.frame.size, false, scale);
-        guard let context = UIGraphicsGetCurrentContext() else {return }
-        layer.render(in:context)
-        screenshotImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        if let image = screenshotImage, shouldSave {
-            UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
-        }
-    }
-    
-    func test() {
-        
-          let renderer = UIGraphicsImageRenderer(size: canvas.bounds.size)
-           let image = renderer.image(actions: { (context) in
-              canvas.drawHierarchy(in: canvas.bounds, afterScreenUpdates: true)
-        })
-           let activityViewController = UIActivityViewController(activityItems: [image], applicationActivities: nil)
-           present(activityViewController, animated: true, completion: nil)
-        
-        
     }
     
     func test2() {
@@ -95,3 +76,17 @@ class ViewController: UIViewController {
     
 }
 
+extension ViewController: UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        return 30
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "testCell", for: indexPath) as! TestCollectionViewCell
+        cell.testButton.titleLabel?.text = "123"
+        return cell
+    }
+}

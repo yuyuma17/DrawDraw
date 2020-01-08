@@ -6,7 +6,6 @@
 //  Copyright © 2020 黃士軒. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 enum PaintingBrushColor {
