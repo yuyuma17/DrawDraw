@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Painting View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="DrawDraw" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="PaintingViewController" customModule="DrawDraw" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -35,6 +35,7 @@
                                         <rect key="frame" x="25" y="20" width="21" height="22.333333333333329"/>
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" image="arrowshape.turn.up.left" catalog="system"/>
+                                        <state key="highlighted" image="arrowshape.turn.up.left.fill" catalog="system"/>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="Wry-SM-qO3">
                                         <rect key="frame" x="326" y="20" width="63" height="22.333333333333329"/>
@@ -43,16 +44,18 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="19" height="22.333333333333332"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" image="trash" catalog="system"/>
+                                                <state key="highlighted" image="trash.fill" catalog="system"/>
                                                 <connections>
-                                                    <action selector="clearButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VXH-KE-pYe"/>
+                                                    <action selector="clearCanvasButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VXH-KE-pYe"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oDL-kR-R34">
                                                 <rect key="frame" x="44" y="0.0" width="19" height="22.333333333333332"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" image="square.and.arrow.up" catalog="system"/>
+                                                <state key="highlighted" image="square.and.arrow.up.fill" catalog="system"/>
                                                 <connections>
-                                                    <action selector="saveButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uV4-vc-R7z"/>
+                                                    <action selector="shareButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uV4-vc-R7z"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -106,28 +109,37 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="35" translatesAutoresizingMaskIntoConstraints="NO" id="Ryc-sW-2Iw">
-                                        <rect key="frame" x="25" y="846" width="144" height="30"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="Ryc-sW-2Iw">
+                                        <rect key="frame" x="25" y="846" width="185" height="30"/>
                                         <subviews>
                                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GgB-5L-eKK">
                                                 <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qKp-81-rrW">
-                                                <rect key="frame" x="65" y="0.0" width="23" height="30"/>
+                                                <rect key="frame" x="60" y="0.0" width="23" height="30"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" image="rectangle.compress.vertical" catalog="system"/>
+                                                <state key="highlighted" image="rectangle.expand.vertical" catalog="system"/>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HQs-Gd-vai">
-                                                <rect key="frame" x="123" y="0.0" width="21" height="30"/>
+                                                <rect key="frame" x="113" y="0.0" width="21" height="30"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" image="wand.and.stars" catalog="system"/>
+                                                <state key="highlighted" image="wand.and.stars.inverse" catalog="system"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h76-m1-5QG">
+                                                <rect key="frame" x="164" y="0.0" width="21" height="30"/>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" image="line.horizontal.3.decrease" catalog="system"/>
+                                                <state key="highlighted" image="line.horizontal.3" catalog="system"/>
                                             </button>
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Ge-2H-qhq">
                                         <rect key="frame" x="369.33333333333331" y="846" width="19.666666666666686" height="30"/>
                                         <state key="normal" image="questionmark.circle" catalog="system"/>
+                                        <state key="highlighted" image="questionmark.circle.fill" catalog="system"/>
                                     </button>
                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Gh-1V-pC6" customClass="CanvasView" customModule="DrawDraw" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="58.333333333333314" width="414" height="776.66666666666674"/>
@@ -169,6 +181,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="backToPreviousStepButton" destination="VpG-19-43z" id="xQ4-2P-6bm"/>
                         <outlet property="buttomView" destination="J4U-Nj-N9r" id="wCo-4d-qD0"/>
                         <outlet property="canvas" destination="1Gh-1V-pC6" id="Mah-Sz-ZB9"/>
                         <outlet property="collectionView" destination="BrQ-za-DWD" id="DIk-9V-zGY"/>
@@ -182,10 +195,18 @@
     </scenes>
     <resources>
         <image name="arrowshape.turn.up.left" catalog="system" width="64" height="52"/>
+        <image name="arrowshape.turn.up.left.fill" catalog="system" width="64" height="52"/>
+        <image name="line.horizontal.3" catalog="system" width="64" height="32"/>
+        <image name="line.horizontal.3.decrease" catalog="system" width="64" height="36"/>
         <image name="questionmark.circle" catalog="system" width="64" height="60"/>
+        <image name="questionmark.circle.fill" catalog="system" width="64" height="60"/>
         <image name="rectangle.compress.vertical" catalog="system" width="64" height="64"/>
+        <image name="rectangle.expand.vertical" catalog="system" width="64" height="60"/>
         <image name="square.and.arrow.up" catalog="system" width="56" height="64"/>
+        <image name="square.and.arrow.up.fill" catalog="system" width="56" height="64"/>
         <image name="trash" catalog="system" width="60" height="64"/>
+        <image name="trash.fill" catalog="system" width="60" height="64"/>
         <image name="wand.and.stars" catalog="system" width="64" height="56"/>
+        <image name="wand.and.stars.inverse" catalog="system" width="64" height="56"/>
     </resources>
 </document>

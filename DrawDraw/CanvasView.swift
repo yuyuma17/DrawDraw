@@ -45,7 +45,12 @@ class CanvasView: UIView {
     }
     
     func clearCanvas() {
-        paintingPath.removeAllPoints()
+        
+        if paintingPath != nil {
+            paintingPath.removeAllPoints()
+        } else {
+            return
+        }
         layer.sublayers = nil
         setNeedsDisplay()
     }
