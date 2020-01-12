@@ -77,12 +77,7 @@ extension PaintingViewController {
                 return
             }
             
-            // 停在這, alert and action ok
-            let activityText: [String] = (activity?.rawValue.components(separatedBy: "."))!
-            let controller = UIAlertController(title: "Successed!", message: "Successfully shared by \"\(activityText[activityText.count - 1])\"", preferredStyle: .alert)
-            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
-            controller.addAction(action)
-            self.present(controller, animated: true, completion: nil)
+            self.showAlert(alertTitle: "Succeed!", alertMessage: "Successfully shard!", [self.alertAction("OK", .default, nil)])
         }
     }
     
