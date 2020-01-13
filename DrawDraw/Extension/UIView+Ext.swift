@@ -15,4 +15,15 @@ extension UIView {
         view.layer.borderColor = UIColor.white.cgColor
         view.layer.borderWidth = 1.5
     }
+    
+    func setViewWithDelayAnimation(_ view: UIView) {
+        
+        UIView.animate(withDuration: 0.7, delay: 0, options: .curveEaseInOut, animations: {
+            view.alpha = 0
+//            view.isHidden = !view.isHidden
+        }, completion: nil)
+//        UIView.animate(withDuration: 5) {
+//            view.isHidden = !view.isHidden
+//        }
+    }
 }

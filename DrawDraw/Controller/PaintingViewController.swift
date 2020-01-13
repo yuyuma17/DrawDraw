@@ -12,6 +12,7 @@ class PaintingViewController: UIViewController {
 
     @IBOutlet weak var buttomView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var selectColorView: UIView!
     @IBOutlet weak var canvas: CanvasView!
     @IBOutlet weak var selectBrushColorButton: UIButton!
     @IBOutlet weak var backToPreviousStepButton: UIButton!
@@ -19,8 +20,6 @@ class PaintingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        要做一個畫直線的功能
-//        canvas.isMultipleTouchEnabled = false
         view.setViewWithBorderAndCircle(selectBrushColorButton)
         backToPreviousStepButton.isEnabled = false
     }
@@ -45,12 +44,17 @@ class PaintingViewController: UIViewController {
     
     @IBAction func clearCanvasButtonPressed(_ sender: UIButton) {
         
-        showAlert(alertTitle: "Do you want to clear the canvas?", alertMessage: nil, [alertAction("No", .default, nil), alertAction("Yes", .destructive, { [weak self] (UIAlertActio) in
+        showAlert(alertTitle: "Do you want to clear the canvas?", alertMessage: nil, [alertAction("No", .default, nil), alertAction("Yes", .destructive, { [weak self] (UIAlertAction) in
             
             guard let self = self else { return }
             self.canvas.clearCanvas()
         })])
     }
+    
+    @IBAction func selectBrushColorButtonPressed(_ sender: UIButton) {
+        view.setViewWithDelayAnimation(selectColorView)
+    }
+    
 }
 
 extension PaintingViewController {
@@ -99,7 +103,7 @@ extension PaintingViewController {
     }
 }
 
-//
+//To do
 extension PaintingViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
