@@ -10,6 +10,7 @@ import UIKit
 
 class TestCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var testButton: UIButton!
+    
+    
     
 }

@@ -47,7 +47,6 @@
 			isa = PBXGroup;
 			children = (
 				16CAECB32328E00300C6F33D /* Main.storyboard */,
-				16613BEC23C57C9E00760F2E /* TestCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -97,6 +96,7 @@
 			children = (
 				16CAECC12328E4CA00C6F33D /* CanvasView.swift */,
 				1638B79923BE461400D0C11A /* PaintingBrush.swift */,
+				16613BEC23C57C9E00760F2E /* TestCollectionViewCell.swift */,
 				16613BE823C4876700760F2E /* View */,
 				16613C9323C6F79F00760F2E /* Controller */,
 				16613BEB23C56D7B00760F2E /* Extension */,

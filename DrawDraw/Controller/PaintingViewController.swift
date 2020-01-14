@@ -15,13 +15,15 @@ class PaintingViewController: UIViewController {
     @IBOutlet weak var selectColorView: UIView!
     @IBOutlet weak var canvas: CanvasView!
     @IBOutlet weak var selectBrushColorButton: UIButton!
-    @IBOutlet weak var backToPreviousStepButton: UIButton!
+    @IBOutlet weak var undoButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.setViewWithBorderAndCircle(selectBrushColorButton)
-        backToPreviousStepButton.isEnabled = false
+        
+        //To Do
+//        backToPreviousStepButton.isEnabled = false
     }
     
     override func viewDidLayoutSubviews() {
@@ -51,10 +53,18 @@ class PaintingViewController: UIViewController {
         })])
     }
     
-    @IBAction func selectBrushColorButtonPressed(_ sender: UIButton) {
-        view.setViewWithDelayAnimation(selectColorView)
+    @IBAction func undoButtonPressed(_ sender: UIButton) {
+        canvas.undo()
     }
     
+    @IBAction func selectBrushColorButtonPressed(_ sender: UIButton) {
+
+        if selectColorView.isHidden == true {
+            view.setViewWithShowUpAnimation(selectColorView)
+        } else {
+            view.setViewWithFadeAwayAnimation(selectColorView)
+        }
+    }
 }
 
 extension PaintingViewController {
@@ -104,17 +114,20 @@ extension PaintingViewController {
 }
 
 //To do
-extension PaintingViewController: UICollectionViewDataSource {
+extension PaintingViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return 30
+        return 10
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "testCell", for: indexPath) as! TestCollectionViewCell
-        cell.testButton.titleLabel?.text = "123"
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
     }
 }

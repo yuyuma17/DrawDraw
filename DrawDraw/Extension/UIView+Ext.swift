@@ -12,18 +12,22 @@ extension UIView {
     
     func setViewWithBorderAndCircle(_ view: UIView) {
         view.layer.cornerRadius = view.frame.height / 2
-        view.layer.borderColor = UIColor.white.cgColor
+        view.layer.borderColor = UIColor.lightGray.cgColor
         view.layer.borderWidth = 1.5
     }
     
-    func setViewWithDelayAnimation(_ view: UIView) {
-        
+    func setViewWithFadeAwayAnimation(_ view: UIView) {
         UIView.animate(withDuration: 0.7, delay: 0, options: .curveEaseInOut, animations: {
             view.alpha = 0
-//            view.isHidden = !view.isHidden
+        }) { (_) in
+            view.isHidden = true
+        }
+    }
+    
+    func setViewWithShowUpAnimation(_ view: UIView) {
+        UIView.animate(withDuration: 0.7, delay: 0, options: .curveEaseInOut, animations: {
+            view.alpha = 1
+            view.isHidden = false
         }, completion: nil)
-//        UIView.animate(withDuration: 5) {
-//            view.isHidden = !view.isHidden
-//        }
     }
 }

@@ -11,8 +11,6 @@ import UIKit
 class CanvasView: UIView {
 
     var paintingColor = PaintingBrushColor.black
-    
-//    lazy var paintingBrushColor = paintingColor.color
     var paintingBrushWidth: CGFloat = 8
     var paintingPath: UIBezierPath!
     var beginPoint: CGPoint!
@@ -39,9 +37,10 @@ class CanvasView: UIView {
         shapeLayer.fillColor = UIColor.clear.cgColor
         
         shapeLayer.lineCap = CAShapeLayerLineCap.round
+        shapeLayer.lineJoin = CAShapeLayerLineJoin.round
         
         layer.addSublayer(shapeLayer)
-        setNeedsDisplay()
+//        setNeedsDisplay()
     }
     
     func clearCanvas() {
@@ -52,6 +51,11 @@ class CanvasView: UIView {
             return
         }
         layer.sublayers = nil
-        setNeedsDisplay()
+//        setNeedsDisplay()
+    }
+    
+    func undo() {
+        
+        
     }
 }

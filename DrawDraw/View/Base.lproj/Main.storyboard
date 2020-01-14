@@ -36,6 +36,9 @@
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" image="arrowshape.turn.up.left" catalog="system"/>
                                         <state key="highlighted" image="arrowshape.turn.up.left.fill" catalog="system"/>
+                                        <connections>
+                                            <action selector="undoButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hUE-KQ-kqi"/>
+                                        </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="Wry-SM-qO3">
                                         <rect key="frame" x="326" y="20" width="63" height="22.333333333333329"/>
@@ -126,19 +129,9 @@
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="avr-89-9Ie">
                                                             <rect key="frame" x="0.0" y="0.0" width="53" height="48"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <subviews>
-                                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BJk-e4-m2Y">
-                                                                    <rect key="frame" x="3.5" y="9" width="46" height="30"/>
-                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                    <state key="normal" title="Button"/>
-                                                                </button>
-                                                            </subviews>
                                                         </collectionViewCellContentView>
                                                         <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <size key="customSize" width="53" height="48"/>
-                                                        <connections>
-                                                            <outlet property="testButton" destination="BJk-e4-m2Y" id="hhf-UJ-99H"/>
-                                                        </connections>
                                                     </collectionViewCell>
                                                 </cells>
                                                 <connections>
@@ -185,12 +178,12 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="backToPreviousStepButton" destination="VpG-19-43z" id="xQ4-2P-6bm"/>
                         <outlet property="buttomView" destination="J4U-Nj-N9r" id="wCo-4d-qD0"/>
                         <outlet property="canvas" destination="1Gh-1V-pC6" id="Mah-Sz-ZB9"/>
                         <outlet property="collectionView" destination="BrQ-za-DWD" id="DIk-9V-zGY"/>
                         <outlet property="selectBrushColorButton" destination="GgB-5L-eKK" id="vUY-pe-Wtb"/>
                         <outlet property="selectColorView" destination="g0E-e4-w1k" id="LAq-L6-FWA"/>
+                        <outlet property="undoButton" destination="VpG-19-43z" id="xQ4-2P-6bm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
