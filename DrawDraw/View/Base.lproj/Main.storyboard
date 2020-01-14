@@ -31,15 +31,29 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VpG-19-43z">
-                                        <rect key="frame" x="25" y="20" width="21" height="22.333333333333329"/>
-                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" image="arrowshape.turn.up.left" catalog="system"/>
-                                        <state key="highlighted" image="arrowshape.turn.up.left.fill" catalog="system"/>
-                                        <connections>
-                                            <action selector="undoButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hUE-KQ-kqi"/>
-                                        </connections>
-                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="UQV-Eq-O96">
+                                        <rect key="frame" x="25" y="20" width="67" height="22.333333333333329"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VpG-19-43z">
+                                                <rect key="frame" x="0.0" y="0.0" width="21" height="22.333333333333332"/>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" image="arrowshape.turn.up.left" catalog="system"/>
+                                                <state key="highlighted" image="arrowshape.turn.up.left.fill" catalog="system"/>
+                                                <connections>
+                                                    <action selector="undoButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hUE-KQ-kqi"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oVb-W6-HJR">
+                                                <rect key="frame" x="46" y="0.0" width="21" height="22.333333333333332"/>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" image="arrowshape.turn.up.right" catalog="system"/>
+                                                <state key="highlighted" image="arrowshape.turn.up.right.fill" catalog="system"/>
+                                                <connections>
+                                                    <action selector="redoButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GkP-pV-ad0"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="Wry-SM-qO3">
                                         <rect key="frame" x="326" y="20" width="63" height="22.333333333333329"/>
                                         <subviews>
@@ -145,21 +159,21 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="VpG-19-43z" firstAttribute="top" secondItem="J4U-Nj-N9r" secondAttribute="top" constant="20" id="6yJ-af-0c6"/>
                                     <constraint firstItem="Wry-SM-qO3" firstAttribute="top" secondItem="J4U-Nj-N9r" secondAttribute="top" constant="20" id="98V-CT-VVy"/>
                                     <constraint firstItem="Ryc-sW-2Iw" firstAttribute="top" secondItem="Bgq-We-hdL" secondAttribute="bottom" constant="10" id="B9G-kA-wM6"/>
+                                    <constraint firstItem="UQV-Eq-O96" firstAttribute="leading" secondItem="J4U-Nj-N9r" secondAttribute="leading" constant="25" id="DJF-WR-ET3"/>
                                     <constraint firstAttribute="bottom" secondItem="Ryc-sW-2Iw" secondAttribute="bottom" constant="20" id="FJK-SI-im2"/>
                                     <constraint firstItem="1Gh-1V-pC6" firstAttribute="leading" secondItem="J4U-Nj-N9r" secondAttribute="leading" id="GIa-71-8Yo"/>
                                     <constraint firstItem="Bgq-We-hdL" firstAttribute="top" secondItem="1Gh-1V-pC6" secondAttribute="bottom" id="GKF-Rd-3Td"/>
                                     <constraint firstAttribute="trailing" secondItem="1Gh-1V-pC6" secondAttribute="trailing" id="IYM-on-oSM"/>
                                     <constraint firstItem="lE6-HV-YXI" firstAttribute="leading" secondItem="J4U-Nj-N9r" secondAttribute="leading" id="J4G-YO-qxN"/>
                                     <constraint firstItem="2Ge-2H-qhq" firstAttribute="top" secondItem="Bgq-We-hdL" secondAttribute="bottom" constant="10" id="Nk0-P1-cMN"/>
+                                    <constraint firstItem="UQV-Eq-O96" firstAttribute="top" secondItem="J4U-Nj-N9r" secondAttribute="top" constant="20" id="Xgh-Q9-Lk3"/>
                                     <constraint firstAttribute="trailing" secondItem="2Ge-2H-qhq" secondAttribute="trailing" constant="25" id="YhM-nS-ICv"/>
                                     <constraint firstItem="lE6-HV-YXI" firstAttribute="top" secondItem="Wry-SM-qO3" secondAttribute="bottom" constant="15" id="aSN-sh-dT3"/>
                                     <constraint firstItem="1Gh-1V-pC6" firstAttribute="top" secondItem="lE6-HV-YXI" secondAttribute="bottom" id="afB-Nj-PzT"/>
                                     <constraint firstItem="Bgq-We-hdL" firstAttribute="leading" secondItem="J4U-Nj-N9r" secondAttribute="leading" id="hqH-Zm-Ee9"/>
-                                    <constraint firstItem="VpG-19-43z" firstAttribute="leading" secondItem="J4U-Nj-N9r" secondAttribute="leading" constant="25" id="j5U-T0-mf8"/>
-                                    <constraint firstItem="lE6-HV-YXI" firstAttribute="top" secondItem="VpG-19-43z" secondAttribute="bottom" constant="15" id="jtD-ER-FcE"/>
+                                    <constraint firstItem="lE6-HV-YXI" firstAttribute="top" secondItem="UQV-Eq-O96" secondAttribute="bottom" constant="15" id="mxr-66-7Uf"/>
                                     <constraint firstAttribute="trailing" secondItem="Bgq-We-hdL" secondAttribute="trailing" id="pPK-OS-EYd"/>
                                     <constraint firstItem="Ryc-sW-2Iw" firstAttribute="leading" secondItem="J4U-Nj-N9r" secondAttribute="leading" constant="25" id="pV7-LK-dbv"/>
                                     <constraint firstAttribute="trailing" secondItem="lE6-HV-YXI" secondAttribute="trailing" id="qSf-Nr-UaH"/>
@@ -181,6 +195,7 @@
                         <outlet property="buttomView" destination="J4U-Nj-N9r" id="wCo-4d-qD0"/>
                         <outlet property="canvas" destination="1Gh-1V-pC6" id="Mah-Sz-ZB9"/>
                         <outlet property="collectionView" destination="BrQ-za-DWD" id="DIk-9V-zGY"/>
+                        <outlet property="redoButton" destination="oVb-W6-HJR" id="VsG-Us-th1"/>
                         <outlet property="selectBrushColorButton" destination="GgB-5L-eKK" id="vUY-pe-Wtb"/>
                         <outlet property="selectColorView" destination="g0E-e4-w1k" id="LAq-L6-FWA"/>
                         <outlet property="undoButton" destination="VpG-19-43z" id="xQ4-2P-6bm"/>
@@ -194,6 +209,8 @@
     <resources>
         <image name="arrowshape.turn.up.left" catalog="system" width="64" height="52"/>
         <image name="arrowshape.turn.up.left.fill" catalog="system" width="64" height="52"/>
+        <image name="arrowshape.turn.up.right" catalog="system" width="64" height="52"/>
+        <image name="arrowshape.turn.up.right.fill" catalog="system" width="64" height="52"/>
         <image name="questionmark.circle" catalog="system" width="64" height="60"/>
         <image name="questionmark.circle.fill" catalog="system" width="64" height="60"/>
         <image name="rectangle.compress.vertical" catalog="system" width="64" height="64"/>

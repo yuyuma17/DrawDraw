@@ -16,6 +16,7 @@ class PaintingViewController: UIViewController {
     @IBOutlet weak var canvas: CanvasView!
     @IBOutlet weak var selectBrushColorButton: UIButton!
     @IBOutlet weak var undoButton: UIButton!
+    @IBOutlet weak var redoButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,6 +56,10 @@ class PaintingViewController: UIViewController {
     
     @IBAction func undoButtonPressed(_ sender: UIButton) {
         canvas.undo()
+    }
+    
+    @IBAction func redoButtonPressed(_ sender: UIButton) {
+        canvas.redo()
     }
     
     @IBAction func selectBrushColorButtonPressed(_ sender: UIButton) {
