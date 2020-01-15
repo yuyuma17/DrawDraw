@@ -14,6 +14,7 @@ class CanvasView: UIView {
     var undoLines = [[CGPoint]]()
     var brushWidth: CGFloat = 4
     var brushColor: UIColor = .black
+    var brushAlpha: CGFloat = 1
     
     weak var paintingVC: PaintingViewController?
     
@@ -28,6 +29,7 @@ class CanvasView: UIView {
         context.setLineJoin(.round)
         context.setLineWidth(brushWidth)
         context.setStrokeColor(brushColor.cgColor)
+        context.setAlpha(brushAlpha)
         
         lines.forEach { (line) in
             for (i, p) in line.enumerated() {
