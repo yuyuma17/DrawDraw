@@ -11,8 +11,11 @@ import UIKit
 class CanvasView: UIView {
     
     var lines = [[CGPoint]]()
+    var undoLines = [[CGPoint]]()
     var brushWidth: CGFloat = 4
     var brushColor: UIColor = .black
+    
+    weak var paintingVC: PaintingViewController?
     
     override func draw(_ rect: CGRect) {
         super.draw(rect)
@@ -39,6 +42,17 @@ class CanvasView: UIView {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        if lines.count == 0 {
+            paintingVC?.clearCanvasButton.isEnabled = true
+            paintingVC?.undoButton.isEnabled = true
+        }
+        
+        if undoLines.count != 0 {
+            paintingVC?.redoButton.isEnabled = false
+            undoLines.removeAll()
+        }
+        
         lines.append([CGPoint]())
     }
     
@@ -56,19 +70,48 @@ class CanvasView: UIView {
     }
     
     func clearCanvas() {
+        guard lines.count > 0 else {
+            return
+        }
         lines.removeAll()
+        undoLines.removeAll()
+        paintingVC?.undoButton.isEnabled = false
+        paintingVC?.redoButton.isEnabled = false
+        paintingVC?.clearCanvasButton.isEnabled = false
         setNeedsDisplay()
     }
     
     func undo() {
-        guard lines.count > 0 else {
-            return
+        
+        if lines.count > 1 {
+            paintingVC?.undoButton.isEnabled = true
+            paintingVC?.redoButton.isEnabled = true
+            undoLines.append(lines.removeLast())
+            setNeedsDisplay()
+        } else if lines.count == 1 {
+            paintingVC?.undoButton.isEnabled = false
+            paintingVC?.redoButton.isEnabled = true
+            paintingVC?.clearCanvasButton.isEnabled = false
+            undoLines.append(lines.removeLast())
+            setNeedsDisplay()
         }
-        lines.removeLast()
-        setNeedsDisplay()
     }
     
     func redo() {
         
+        if undoLines.count > 1 {
+            paintingVC?.undoButton.isEnabled = true
+            paintingVC?.clearCanvasButton.isEnabled = true
+            lines.append(undoLines.last!)
+            undoLines.removeLast()
+            setNeedsDisplay()
+        } else if undoLines.count == 1 {
+            paintingVC?.undoButton.isEnabled = true
+            paintingVC?.redoButton.isEnabled = false
+            paintingVC?.clearCanvasButton.isEnabled = true
+            lines.append(undoLines.last!)
+            undoLines.removeLast()
+            setNeedsDisplay()
+        }
     }
 }

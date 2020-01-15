@@ -15,16 +15,18 @@ class PaintingViewController: UIViewController {
     @IBOutlet weak var selectColorView: UIView!
     @IBOutlet weak var canvas: CanvasView!
     @IBOutlet weak var selectBrushColorButton: UIButton!
+    @IBOutlet weak var clearCanvasButton: UIButton!
     @IBOutlet weak var undoButton: UIButton!
     @IBOutlet weak var redoButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        canvas.paintingVC = self
+        undoButton.isEnabled = false
+        redoButton.isEnabled = false
+        clearCanvasButton.isEnabled = false
         view.setViewWithBorderAndCircle(selectBrushColorButton)
-        
-        //To Do
-//        backToPreviousStepButton.isEnabled = false
     }
     
     override func viewDidLayoutSubviews() {

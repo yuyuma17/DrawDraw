@@ -194,6 +194,7 @@
                     <connections>
                         <outlet property="buttomView" destination="J4U-Nj-N9r" id="wCo-4d-qD0"/>
                         <outlet property="canvas" destination="1Gh-1V-pC6" id="Mah-Sz-ZB9"/>
+                        <outlet property="clearCanvasButton" destination="TC6-NQ-8QQ" id="OlC-Us-xiN"/>
                         <outlet property="collectionView" destination="BrQ-za-DWD" id="DIk-9V-zGY"/>
                         <outlet property="redoButton" destination="oVb-W6-HJR" id="VsG-Us-th1"/>
                         <outlet property="selectBrushColorButton" destination="GgB-5L-eKK" id="vUY-pe-Wtb"/>
