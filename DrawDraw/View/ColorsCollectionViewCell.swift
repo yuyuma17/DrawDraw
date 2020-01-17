@@ -1,5 +1,5 @@
 //
-//  TestCollectionViewCell.swift
+//  ColorsCollectionViewCell.swift
 //  DrawDraw
 //
 //  Created by 黃士軒 on 2020/1/8.
@@ -8,9 +8,8 @@
 
 import UIKit
 
-class TestCollectionViewCell: UICollectionViewCell {
+class ColorsCollectionViewCell: UICollectionViewCell {
     
-    
-    
+    @IBOutlet weak var colorsView: UIView!
     
 }
