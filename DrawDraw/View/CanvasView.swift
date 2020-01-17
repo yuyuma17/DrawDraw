@@ -67,7 +67,6 @@ class CanvasView: UIView {
         guard var lastPoint = lines.popLast() else { return }
         lastPoint.append(touch)
         lines.append(lastPoint)
-        
         setNeedsDisplay()
     }
     
@@ -85,35 +84,30 @@ class CanvasView: UIView {
     
     func undo() {
         
-        if lines.count > 1 {
-            paintingVC?.undoButton.isEnabled = true
-            paintingVC?.redoButton.isEnabled = true
-            undoLines.append(lines.removeLast())
-            setNeedsDisplay()
-        } else if lines.count == 1 {
+        if lines.count == 1 {
             paintingVC?.undoButton.isEnabled = false
-            paintingVC?.redoButton.isEnabled = true
             paintingVC?.clearCanvasButton.isEnabled = false
-            undoLines.append(lines.removeLast())
-            setNeedsDisplay()
         }
+        if paintingVC?.redoButton.isEnabled == false {
+            paintingVC?.redoButton.isEnabled = true
+        }
+        undoLines.append(lines.removeLast())
+        setNeedsDisplay()
     }
     
     func redo() {
         
-        if undoLines.count > 1 {
-            paintingVC?.undoButton.isEnabled = true
-            paintingVC?.clearCanvasButton.isEnabled = true
-            lines.append(undoLines.last!)
-            undoLines.removeLast()
-            setNeedsDisplay()
-        } else if undoLines.count == 1 {
-            paintingVC?.undoButton.isEnabled = true
+        if undoLines.count == 1 {
             paintingVC?.redoButton.isEnabled = false
-            paintingVC?.clearCanvasButton.isEnabled = true
-            lines.append(undoLines.last!)
-            undoLines.removeLast()
-            setNeedsDisplay()
         }
+        if paintingVC?.undoButton.isEnabled == false {
+            paintingVC?.undoButton.isEnabled = true
+        }
+        if paintingVC?.clearCanvasButton.isEnabled == false {
+            paintingVC?.clearCanvasButton.isEnabled = true
+        }
+        lines.append(undoLines.last!)
+        undoLines.removeLast()
+        setNeedsDisplay()
     }
 }
