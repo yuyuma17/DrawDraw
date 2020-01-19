@@ -1,5 +1,5 @@
 //
-//  CanvasView.swift
+//  CanvasViewController.swift
 //  DrawDraw
 //
 //  Created by 黃士軒 on 2019/9/11.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CanvasView: UIView {
+class CanvasViewController: UIView {
     
     var lines = [[CGPoint]]()
     var undoLines = [[CGPoint]]()

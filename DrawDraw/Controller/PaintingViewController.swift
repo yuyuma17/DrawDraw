@@ -15,7 +15,7 @@ class PaintingViewController: UIViewController {
     @IBOutlet weak var buttomView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var selectColorView: UIView!
-    @IBOutlet weak var canvas: CanvasView!
+    @IBOutlet weak var canvas: CanvasViewController!
     @IBOutlet weak var selectBrushColorButton: UIButton!
     @IBOutlet weak var clearCanvasButton: UIButton!
     @IBOutlet weak var undoButton: UIButton!
