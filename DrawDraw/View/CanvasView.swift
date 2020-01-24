@@ -1,5 +1,5 @@
 //
-//  CanvasViewController.swift
+//  CanvasView.swift
 //  DrawDraw
 //
 //  Created by 黃士軒 on 2019/9/11.
@@ -8,13 +8,13 @@
 
 import UIKit
 
-class CanvasViewController: UIView {
+class CanvasView: UIView {
     
-    var lines = [[CGPoint]]()
-    var undoLines = [[CGPoint]]()
-    var brushWidth: CGFloat = 4
-    var brushColor: UIColor = .black
-    var brushAlpha: CGFloat = 1
+    fileprivate var lines = [Line]()
+    fileprivate var undoLines = [Line]()
+    fileprivate var brushColor: UIColor = .black
+    fileprivate var brushWidth: Float = 4
+    fileprivate var brushAlpha: Float = 1
     
     weak var paintingVC: PaintingViewController?
     
@@ -27,12 +27,14 @@ class CanvasViewController: UIView {
         
         context.setLineCap(.round)
         context.setLineJoin(.round)
-        context.setLineWidth(brushWidth)
-        context.setStrokeColor(brushColor.cgColor)
-        context.setAlpha(brushAlpha)
         
         lines.forEach { (line) in
-            for (i, p) in line.enumerated() {
+            
+            context.setStrokeColor(line.color.cgColor)
+            context.setLineWidth(CGFloat(line.width))
+            context.setAlpha(CGFloat(line.alpha))
+            
+            for (i, p) in line.points.enumerated() {
                 if i == 0 {
                     context.move(to: p)
                 } else {
@@ -55,18 +57,18 @@ class CanvasViewController: UIView {
             undoLines.removeAll()
         }
         
-        lines.append([CGPoint]())
+        lines.append(Line.init(color: brushColor, width: brushWidth, alpha: brushAlpha, points: []))
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         
-        guard let touch = touches.first?.location(in: self) else {
+        guard let point = touches.first?.location(in: self) else {
             return
         }
         
-        guard var lastPoint = lines.popLast() else { return }
-        lastPoint.append(touch)
-        lines.append(lastPoint)
+        guard var lastLine = lines.popLast() else { return }
+        lastLine.points.append(point)
+        lines.append(lastLine)
         setNeedsDisplay()
     }
     
@@ -109,5 +111,17 @@ class CanvasViewController: UIView {
         lines.append(undoLines.last!)
         undoLines.removeLast()
         setNeedsDisplay()
+    }
+    
+    func setBrushColor(color: UIColor) {
+        brushColor = color
+    }
+    
+    func setBrushWidth(width: Float) {
+        brushWidth = width
+    }
+    
+    func setBrushAlpha(alpha: Float) {
+        brushAlpha = alpha
     }
 }

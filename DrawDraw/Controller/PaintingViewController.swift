@@ -15,7 +15,8 @@ class PaintingViewController: UIViewController {
     @IBOutlet weak var buttomView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var selectColorView: UIView!
-    @IBOutlet weak var canvas: CanvasViewController!
+    @IBOutlet weak var selectWidthAndAlphaView: UIView!
+    @IBOutlet weak var canvas: CanvasView!
     @IBOutlet weak var selectBrushColorButton: UIButton!
     @IBOutlet weak var clearCanvasButton: UIButton!
     @IBOutlet weak var undoButton: UIButton!
@@ -28,6 +29,10 @@ class PaintingViewController: UIViewController {
         undoButton.isEnabled = false
         redoButton.isEnabled = false
         clearCanvasButton.isEnabled = false
+        selectColorView.isHidden = true
+        selectColorView.alpha = 0
+        selectWidthAndAlphaView.isHidden = true
+        selectWidthAndAlphaView.alpha = 0
         view.setViewWithBorderAndCircle(selectBrushColorButton)
     }
     
@@ -74,6 +79,24 @@ class PaintingViewController: UIViewController {
             view.setViewWithFadeAwayAnimation(selectColorView)
         }
     }
+    
+    @IBAction func selectBrushWidthAndAlphaButtonPressed(_ sender: UIButton) {
+        
+        if selectWidthAndAlphaView.isHidden == true {
+            view.setViewWithShowUpAnimation(selectWidthAndAlphaView)
+        } else {
+            view.setViewWithFadeAwayAnimation(selectWidthAndAlphaView)
+        }
+    }
+    
+    @IBAction func brushWidthSlided(_ sender: UISlider) {
+        canvas.setBrushWidth(width: sender.value)
+    }
+    
+    @IBAction func brushAlphaSlided(_ sender: UISlider) {
+        canvas.setBrushAlpha(alpha: sender.value)
+    }
+    
 }
 
 extension PaintingViewController {
@@ -144,6 +167,6 @@ extension PaintingViewController: UICollectionViewDataSource, UICollectionViewDe
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let color = colorsArray[indexPath.row]
-        canvas.brushColor = color
+        canvas.setBrushColor(color: color)
     }
 }

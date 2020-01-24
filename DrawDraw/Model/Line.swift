@@ -1,5 +1,5 @@
 //
-//  PaintingBrush.swift
+//  Line.swift
 //  DrawDraw
 //
 //  Created by 黃士軒 on 2020/1/19.
@@ -8,10 +8,11 @@
 
 import UIKit
 
-struct PaintingBrush {
+struct Line {
     
-    var color: UIColor
-    var width: CGFloat
-    var alpha: CGFloat
+    let color: UIColor
+    let width: Float
+    let alpha: Float
+    var points: [CGPoint]
     
 }

@@ -104,6 +104,9 @@
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" image="rectangle.compress.vertical" catalog="system"/>
                                                 <state key="highlighted" image="rectangle.expand.vertical" catalog="system"/>
+                                                <connections>
+                                                    <action selector="selectBrushWidthAndAlphaButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="O8v-OC-ESY"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HQs-Gd-vai">
                                                 <rect key="frame" x="113" y="0.0" width="21" height="30"/>
@@ -118,7 +121,7 @@
                                         <state key="normal" image="questionmark.circle" catalog="system"/>
                                         <state key="highlighted" image="questionmark.circle.fill" catalog="system"/>
                                     </button>
-                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Gh-1V-pC6" customClass="CanvasViewController" customModule="DrawDraw" customModuleProvider="target">
+                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Gh-1V-pC6" customClass="CanvasView" customModule="DrawDraw" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="58.333333333333314" width="414" height="776.66666666666674"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
@@ -169,6 +172,28 @@
                                             </collectionView>
                                         </subviews>
                                     </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kUj-vE-DCR">
+                                        <rect key="frame" x="8" y="722" width="406" height="104"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="4" minValue="1" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="IVq-QO-uWC">
+                                                <rect key="frame" x="144" y="14" width="118" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <connections>
+                                                    <action selector="brushWidthSlided:" destination="BYZ-38-t0r" eventType="valueChanged" id="EsE-81-SAm"/>
+                                                </connections>
+                                            </slider>
+                                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.01" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="R3y-r6-112">
+                                                <rect key="frame" x="142" y="59" width="118" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <connections>
+                                                    <action selector="brushAlphaSlided:" destination="BYZ-38-t0r" eventType="valueChanged" id="v69-xY-JPU"/>
+                                                </connections>
+                                            </slider>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -212,6 +237,7 @@
                         <outlet property="redoButton" destination="oVb-W6-HJR" id="VsG-Us-th1"/>
                         <outlet property="selectBrushColorButton" destination="GgB-5L-eKK" id="vUY-pe-Wtb"/>
                         <outlet property="selectColorView" destination="g0E-e4-w1k" id="LAq-L6-FWA"/>
+                        <outlet property="selectWidthAndAlphaView" destination="kUj-vE-DCR" id="N37-3J-l8I"/>
                         <outlet property="undoButton" destination="VpG-19-43z" id="xQ4-2P-6bm"/>
                     </connections>
                 </viewController>
