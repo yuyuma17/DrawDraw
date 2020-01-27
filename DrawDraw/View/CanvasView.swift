@@ -30,9 +30,16 @@ class CanvasView: UIView {
         
         lines.forEach { (line) in
             
-            context.setStrokeColor(line.color.cgColor)
+            context.setStrokeColor(UIColor.white.cgColor)
+//            context.setStrokeColor(line.color.cgColor)
             context.setLineWidth(CGFloat(line.width))
             context.setAlpha(CGFloat(line.alpha))
+            
+            
+            let shadowColor = UIColor.red
+            let transparentShadowColor = shadowColor.withAlphaComponent(1)
+            context.setShadow(offset: CGSize(width: 0, height: 0), blur: CGFloat(line.width / 1.25), color: transparentShadowColor.cgColor)
+//            context.setBlendMode(.screen)
             
             for (i, p) in line.points.enumerated() {
                 if i == 0 {
