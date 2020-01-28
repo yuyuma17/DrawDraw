@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		16613BEA23C56D7400760F2E /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16613BE923C56D7400760F2E /* UIView+Ext.swift */; };
 		16613BED23C57C9E00760F2E /* ColorsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16613BEC23C57C9E00760F2E /* ColorsCollectionViewCell.swift */; };
+		16C1536F23DFF17B0074CFB5 /* BrushType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C1536E23DFF17B0074CFB5 /* BrushType.swift */; };
 		16CAECB02328E00300C6F33D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CAECAF2328E00300C6F33D /* AppDelegate.swift */; };
 		16CAECB22328E00300C6F33D /* PaintingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CAECB12328E00300C6F33D /* PaintingViewController.swift */; };
 		16CAECB52328E00300C6F33D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16CAECB32328E00300C6F33D /* Main.storyboard */; };
@@ -21,6 +22,7 @@
 /* Begin PBXFileReference section */
 		16613BE923C56D7400760F2E /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		16613BEC23C57C9E00760F2E /* ColorsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorsCollectionViewCell.swift; sourceTree = "<group>"; };
+		16C1536E23DFF17B0074CFB5 /* BrushType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrushType.swift; sourceTree = "<group>"; };
 		16CAECAC2328E00300C6F33D /* DrawDraw.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DrawDraw.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		16CAECAF2328E00300C6F33D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		16CAECB12328E00300C6F33D /* PaintingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaintingViewController.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				16D19DFA23D49D4D0065540D /* Line.swift */,
+				16C1536E23DFF17B0074CFB5 /* BrushType.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -187,6 +190,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16C1536F23DFF17B0074CFB5 /* BrushType.swift in Sources */,
 				16613BED23C57C9E00760F2E /* ColorsCollectionViewCell.swift in Sources */,
 				16CAECB22328E00300C6F33D /* PaintingViewController.swift in Sources */,
 				16613BEA23C56D7400760F2E /* UIView+Ext.swift in Sources */,

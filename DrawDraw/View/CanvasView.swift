@@ -13,8 +13,11 @@ class CanvasView: UIView {
     fileprivate var lines = [Line]()
     fileprivate var undoLines = [Line]()
     fileprivate var brushColor: UIColor = .black
+    fileprivate var neonColor: UIColor = .white
     fileprivate var brushWidth: Float = 4
     fileprivate var brushAlpha: Float = 1
+    fileprivate var brushBlur: Float = 0
+    fileprivate var paintingBrushType = BrushType.normal
     
     weak var paintingVC: PaintingViewController?
     
@@ -30,16 +33,20 @@ class CanvasView: UIView {
         
         lines.forEach { (line) in
             
-            context.setStrokeColor(UIColor.white.cgColor)
-//            context.setStrokeColor(line.color.cgColor)
+            switch paintingBrushType {
+                
+            case .normal:
+                context.setStrokeColor(line.color.cgColor)
+                context.setShadow(offset: CGSize(width: 0, height: 0), blur: CGFloat(line.blur), color: line.color.cgColor)
+            case .blur:
+                return
+            case .neon:
+                context.setStrokeColor(line.neonColor.cgColor)
+                context.setShadow(offset: CGSize(width: 0, height: 0), blur: CGFloat(line.blur), color: line.color.cgColor)
+            }
+            
             context.setLineWidth(CGFloat(line.width))
             context.setAlpha(CGFloat(line.alpha))
-            
-            
-            let shadowColor = UIColor.red
-            let transparentShadowColor = shadowColor.withAlphaComponent(1)
-            context.setShadow(offset: CGSize(width: 0, height: 0), blur: CGFloat(line.width / 1.25), color: transparentShadowColor.cgColor)
-//            context.setBlendMode(.screen)
             
             for (i, p) in line.points.enumerated() {
                 if i == 0 {
@@ -64,7 +71,7 @@ class CanvasView: UIView {
             undoLines.removeAll()
         }
         
-        lines.append(Line.init(color: brushColor, width: brushWidth, alpha: brushAlpha, points: []))
+        lines.append(Line.init(color: brushColor, width: brushWidth, alpha: brushAlpha, blur: brushBlur, neonColor: neonColor, points: []))
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -118,6 +125,12 @@ class CanvasView: UIView {
         lines.append(undoLines.last!)
         undoLines.removeLast()
         setNeedsDisplay()
+    }
+    
+    func setBrushType(type: BrushType, test: Float, tt: UIColor) {
+        paintingBrushType = type
+        brushBlur = test
+        brushColor = tt
     }
     
     func setBrushColor(color: UIColor) {

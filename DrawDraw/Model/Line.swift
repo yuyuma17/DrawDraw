@@ -13,6 +13,8 @@ struct Line {
     let color: UIColor
     let width: Float
     let alpha: Float
+    let blur: Float
+    let neonColor: UIColor
     var points: [CGPoint]
     
 }
