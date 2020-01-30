@@ -87,7 +87,7 @@ class PaintingViewController: UIViewController {
         } else {
             view.setViewWithFadeAwayAnimation(selectWidthAndAlphaView)
         }
-        canvas.setBrushType(type: .neon, test: 20, tt: .white)
+        canvas.setBrushType(type: .neon, test: 20)
     }
     
     @IBAction func brushWidthSlided(_ sender: UISlider) {

@@ -11,10 +11,10 @@ import UIKit
 struct Line {
     
     let color: UIColor
+    let shadow: UIColor
     let width: Float
     let alpha: Float
     let blur: Float
-    let neonColor: UIColor
     var points: [CGPoint]
     
 }

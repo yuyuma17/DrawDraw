@@ -13,7 +13,7 @@ class CanvasView: UIView {
     fileprivate var lines = [Line]()
     fileprivate var undoLines = [Line]()
     fileprivate var brushColor: UIColor = .black
-    fileprivate var neonColor: UIColor = .white
+    fileprivate var shadowColor: UIColor = .black
     fileprivate var brushWidth: Float = 4
     fileprivate var brushAlpha: Float = 1
     fileprivate var brushBlur: Float = 0
@@ -37,12 +37,12 @@ class CanvasView: UIView {
                 
             case .normal:
                 context.setStrokeColor(line.color.cgColor)
-                context.setShadow(offset: CGSize(width: 0, height: 0), blur: CGFloat(line.blur), color: line.color.cgColor)
+                context.setShadow(offset: CGSize(width: 0, height: 0), blur: CGFloat(line.blur), color: line.shadow.cgColor)
             case .blur:
                 return
             case .neon:
-                context.setStrokeColor(line.neonColor.cgColor)
-                context.setShadow(offset: CGSize(width: 0, height: 0), blur: CGFloat(line.blur), color: line.color.cgColor)
+                context.setStrokeColor(line.color.cgColor)
+                context.setShadow(offset: CGSize(width: 0, height: 0), blur: CGFloat(line.blur), color: line.shadow.cgColor)
             }
             
             context.setLineWidth(CGFloat(line.width))
@@ -71,7 +71,7 @@ class CanvasView: UIView {
             undoLines.removeAll()
         }
         
-        lines.append(Line.init(color: brushColor, width: brushWidth, alpha: brushAlpha, blur: brushBlur, neonColor: neonColor, points: []))
+        lines.append(Line.init(color: brushColor, shadow: shadowColor, width: brushWidth, alpha: brushAlpha, blur: brushBlur, points: []))
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -127,10 +127,10 @@ class CanvasView: UIView {
         setNeedsDisplay()
     }
     
-    func setBrushType(type: BrushType, test: Float, tt: UIColor) {
+    func setBrushType(type: BrushType, test: Float, test2: UIColor = .white) {
         paintingBrushType = type
         brushBlur = test
-        brushColor = tt
+        brushColor = test2
     }
     
     func setBrushColor(color: UIColor) {
