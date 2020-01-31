@@ -127,14 +127,19 @@ class CanvasView: UIView {
         setNeedsDisplay()
     }
     
-    func setBrushType(type: BrushType, test: Float, test2: UIColor = .white) {
+    func setBrushType(type: BrushType, test2: UIColor = .white) {
         paintingBrushType = type
-        brushBlur = test
+        brushBlur = brushWidth * 1.5
         brushColor = test2
     }
     
     func setBrushColor(color: UIColor) {
-        brushColor = color
+        
+        if paintingBrushType == .normal {
+            brushColor = color
+        } else if paintingBrushType == .neon {
+            shadowColor = color
+        }
     }
     
     func setBrushWidth(width: Float) {

@@ -56,7 +56,7 @@ class PaintingViewController: UIViewController {
     
     @IBAction func clearCanvasButtonPressed(_ sender: UIButton) {
         
-        showAlert(alertTitle: "Do you want to clear the canvas?", alertMessage: nil, [alertAction("No", .default, nil), alertAction("Yes", .destructive, { [weak self] (_) in
+        showAlert(alertTitle: "Do you want to clear the canvas?", alertMessage: nil, alertStyle: .alert, [alertAction("No", .default, nil), alertAction("Yes", .destructive, { [weak self] (_) in
             
             guard let self = self else { return }
             self.canvas.clearCanvas()
@@ -70,6 +70,11 @@ class PaintingViewController: UIViewController {
     @IBAction func redoButtonPressed(_ sender: UIButton) {
         canvas.redo()
     }
+    
+    @IBAction func selectBrushTypeButtonPressed(_ sender: UIButton) {
+        showAlert(alertTitle: "Select One Type Of Brushes" , alertMessage: nil, alertStyle: .alert, <#T##actions: [UIAlertAction]##[UIAlertAction]#>)
+    }
+    
     
     @IBAction func selectBrushColorButtonPressed(_ sender: UIButton) {
 
@@ -87,7 +92,7 @@ class PaintingViewController: UIViewController {
         } else {
             view.setViewWithFadeAwayAnimation(selectWidthAndAlphaView)
         }
-        canvas.setBrushType(type: .neon, test: 20)
+        canvas.setBrushType(type: .neon)
     }
     
     @IBAction func brushWidthSlided(_ sender: UISlider) {
@@ -117,7 +122,7 @@ extension PaintingViewController {
                 print(error ?? "User canceled sharing.")
                 return
             }
-            self.showAlert(alertTitle: "Succeed!", alertMessage: "Successfully completed!", [self.alertAction("OK", .default, nil)])
+            self.showAlert(alertTitle: "Succeed!", alertMessage: "Successfully completed!", alertStyle: .alert, [self.alertAction("OK", .default, nil)])
         }
     }
     
@@ -132,9 +137,9 @@ extension PaintingViewController {
         activityVC.completionWithItemsHandler = handler
     }
     
-    private func showAlert(alertTitle: String, alertMessage: String?, _ actions: [UIAlertAction]) {
+    private func showAlert(alertTitle: String, alertMessage: String?, alertStyle: UIAlertController.Style, _ actions: [UIAlertAction]) {
         
-        let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
+        let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: alertStyle)
         
         for i in 0..<actions.count {
             alert.addAction(actions[i])

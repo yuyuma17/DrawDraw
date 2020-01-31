@@ -96,6 +96,9 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="17.666666666666668" height="30"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" image="pencil" catalog="system"/>
+                                                <connections>
+                                                    <action selector="selectBrushTypeButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="h9f-sq-6mP"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GgB-5L-eKK">
                                                 <rect key="frame" x="47.666666666666671" y="0.0" width="30" height="30"/>
