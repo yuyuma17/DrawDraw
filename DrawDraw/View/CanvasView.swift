@@ -39,7 +39,8 @@ class CanvasView: UIView {
                 context.setStrokeColor(line.color.cgColor)
                 context.setShadow(offset: CGSize(width: 0, height: 0), blur: CGFloat(line.blur), color: line.shadow.cgColor)
             case .blur:
-                return
+                context.setStrokeColor(line.color.cgColor)
+                context.setShadow(offset: CGSize(width: 0, height: 0), blur: CGFloat(line.blur), color: line.shadow.cgColor)
             case .neon:
                 context.setStrokeColor(line.color.cgColor)
                 context.setShadow(offset: CGSize(width: 0, height: 0), blur: CGFloat(line.blur), color: line.shadow.cgColor)
@@ -127,17 +128,34 @@ class CanvasView: UIView {
         setNeedsDisplay()
     }
     
-    func setBrushType(type: BrushType, test2: UIColor = .white) {
-        paintingBrushType = type
+    func setBrushTypeToNormal() {
+        paintingBrushType = .normal
+        brushBlur = 0
+        brushColor = .black
+    }
+    
+    func setBrushTypeToBlur() {
+        paintingBrushType = .blur
         brushBlur = brushWidth * 1.5
-        brushColor = test2
+        brushColor = .black
+    }
+    
+    func setBrushTypeToNeon(neonInnerColor: UIColor = .white) {
+        paintingBrushType = .neon
+        brushBlur = brushWidth * 1.5
+        brushColor = neonInnerColor
     }
     
     func setBrushColor(color: UIColor) {
         
-        if paintingBrushType == .normal {
+        switch paintingBrushType {
+            
+        case .normal:
             brushColor = color
-        } else if paintingBrushType == .neon {
+        case .blur:
+            brushColor = color
+            shadowColor = color
+        case .neon:
             shadowColor = color
         }
     }

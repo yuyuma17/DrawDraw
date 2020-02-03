@@ -72,7 +72,16 @@ class PaintingViewController: UIViewController {
     }
     
     @IBAction func selectBrushTypeButtonPressed(_ sender: UIButton) {
-        showAlert(alertTitle: "Select One Type Of Brushes" , alertMessage: nil, alertStyle: .alert, <#T##actions: [UIAlertAction]##[UIAlertAction]#>)
+        showAlert(alertTitle: "Select One Type Of Brushes" , alertMessage: nil, alertStyle: .alert, [alertAction("Normal", .default, { [weak self] (_) in
+            guard let self = self else { return }
+            self.canvas.setBrushTypeToNormal()
+        }), alertAction("Blur", .default, { [weak self] (_) in
+            guard let self = self else { return }
+            self.canvas.setBrushTypeToBlur()
+        }), alertAction("Neon", .default, { [weak self] (_) in
+            guard let self = self else { return }
+            self.canvas.setBrushTypeToNeon()
+        }), alertAction("Cancel", .cancel, nil)])
     }
     
     
@@ -92,7 +101,6 @@ class PaintingViewController: UIViewController {
         } else {
             view.setViewWithFadeAwayAnimation(selectWidthAndAlphaView)
         }
-        canvas.setBrushType(type: .neon)
     }
     
     @IBAction func brushWidthSlided(_ sender: UISlider) {
