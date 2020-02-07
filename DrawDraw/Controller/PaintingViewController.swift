@@ -10,7 +10,7 @@ import UIKit
 
 class PaintingViewController: UIViewController {
 
-    var colorsArray: [UIColor] = [#colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1), #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1), #colorLiteral(red: 1, green: 0.4059419876, blue: 0.2455089305, alpha: 1), #colorLiteral(red: 0.1764705926, green: 0.01176470611, blue: 0.5607843399, alpha: 1), #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1), #colorLiteral(red: 1, green: 0.4059419876, blue: 0.2455089305, alpha: 1), #colorLiteral(red: 0.06274510175, green: 0, blue: 0.1921568662, alpha: 1), #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1), #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1), #colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1), #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1), #colorLiteral(red: 0.9411764741, green: 0.4980392158, blue: 0.3529411852, alpha: 1), #colorLiteral(red: 0.3176470697, green: 0.07450980693, blue: 0.02745098062, alpha: 1), #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1), #colorLiteral(red: 0.3823936913, green: 0.8900789089, blue: 1, alpha: 1), #colorLiteral(red: 1, green: 0.4528176247, blue: 0.4432695911, alpha: 1), #colorLiteral(red: 0.05882352963, green: 0.180392161, blue: 0.2470588237, alpha: 1), #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)]
+    var colorsArray: [UIColor] = [#colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1), #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1), #colorLiteral(red: 1, green: 0.4059419876, blue: 0.2455089305, alpha: 1), #colorLiteral(red: 0.1764705926, green: 0.01176470611, blue: 0.5607843399, alpha: 1), #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1), #colorLiteral(red: 0.06274510175, green: 0, blue: 0.1921568662, alpha: 1), #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1), #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1), #colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1), #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1), #colorLiteral(red: 0.9411764741, green: 0.4980392158, blue: 0.3529411852, alpha: 1), #colorLiteral(red: 0.3176470697, green: 0.07450980693, blue: 0.02745098062, alpha: 1), #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1), #colorLiteral(red: 0.3823936913, green: 0.8900789089, blue: 1, alpha: 1), #colorLiteral(red: 1, green: 0.4528176247, blue: 0.4432695911, alpha: 1), #colorLiteral(red: 0.05882352963, green: 0.180392161, blue: 0.2470588237, alpha: 1), #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)]
     
     @IBOutlet weak var buttomView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -33,7 +33,7 @@ class PaintingViewController: UIViewController {
         selectColorView.alpha = 0
         selectWidthAndAlphaView.isHidden = true
         selectWidthAndAlphaView.alpha = 0
-        view.setViewWithBorderAndCircle(selectBrushColorButton)
+        view.setViewWithRoundCornerRadius(selectBrushColorButton)
     }
     
     override func viewDidLayoutSubviews() {
@@ -56,7 +56,7 @@ class PaintingViewController: UIViewController {
     
     @IBAction func clearCanvasButtonPressed(_ sender: UIButton) {
         
-        showAlert(alertTitle: "Do you want to clear the canvas?", alertMessage: nil, alertStyle: .alert, [alertAction("No", .default, nil), alertAction("Yes", .destructive, { [weak self] (_) in
+        showAlert(alertTitle: "Clear the canvas?", alertMessage: nil, alertStyle: .alert, [alertAction("No", .default, nil), alertAction("Yes", .destructive, { [weak self] (_) in
             
             guard let self = self else { return }
             self.canvas.clearCanvas()
@@ -84,13 +84,16 @@ class PaintingViewController: UIViewController {
         }), alertAction("Cancel", .cancel, nil)])
     }
     
-    
     @IBAction func selectBrushColorButtonPressed(_ sender: UIButton) {
 
         if selectColorView.isHidden == true {
             view.setViewWithShowUpAnimation(selectColorView)
         } else {
             view.setViewWithFadeAwayAnimation(selectColorView)
+        }
+        
+        if selectWidthAndAlphaView.isHidden == false {
+            view.setViewWithFadeAwayAnimation(selectWidthAndAlphaView)
         }
     }
     
@@ -100,6 +103,10 @@ class PaintingViewController: UIViewController {
             view.setViewWithShowUpAnimation(selectWidthAndAlphaView)
         } else {
             view.setViewWithFadeAwayAnimation(selectWidthAndAlphaView)
+        }
+        
+        if selectColorView.isHidden == false {
+            view.setViewWithFadeAwayAnimation(selectColorView)
         }
     }
     
@@ -111,18 +118,35 @@ class PaintingViewController: UIViewController {
         canvas.setBrushAlpha(alpha: sender.value)
     }
     
+    @IBAction func saveScreenshotButtonPressed(_ sender: UIButton) {
+        showAlert(alertTitle: "Take a Screenshot?", alertMessage: nil, alertStyle: .alert, [alertAction("No", .default, nil), alertAction("Yes", .default, { [weak self] (_) in
+            guard let self = self else { return }
+            self.saveScreenshot()
+        })])
+    }
 }
 
 extension PaintingViewController {
     
-    private func sharePainting() {
+    private func canvasScreenshot() -> UIImage? {
         
         UIGraphicsBeginImageContextWithOptions(canvas.frame.size, true, 0)
         canvas.drawHierarchy(in: canvas.bounds, afterScreenUpdates: true)
-        let shareImage = UIGraphicsGetImageFromCurrentImageContext()
+        let canvasScreenshot = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
-        showActivityVC([shareImage!]) { [weak self] (activityType, completed, items, error) in
+        return canvasScreenshot
+    }
+    
+    private func saveScreenshot() {
+        if let screenshot = canvasScreenshot() {
+            UIImageWriteToSavedPhotosAlbum(screenshot, nil, nil, nil)
+        }
+    }
+    
+    private func sharePainting() {
+        
+        showActivityVC([canvasScreenshot()!]) { [weak self] (activityType, completed, items, error) in
             
             guard let self = self else { return }
             
@@ -173,8 +197,7 @@ extension PaintingViewController: UICollectionViewDataSource, UICollectionViewDe
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ColorsCollectionViewCell", for: indexPath) as! ColorsCollectionViewCell
-        cell.colorsView.backgroundColor = colorsArray[indexPath.row]
-        view.setViewWithBorderAndCircle(cell.colorsView)
+        cell.setView(colorsArray[indexPath.row])
         return cell
     }
     
@@ -182,5 +205,6 @@ extension PaintingViewController: UICollectionViewDataSource, UICollectionViewDe
         
         let color = colorsArray[indexPath.row]
         canvas.setBrushColor(color: color)
+        selectBrushColorButton.backgroundColor = color
     }
 }

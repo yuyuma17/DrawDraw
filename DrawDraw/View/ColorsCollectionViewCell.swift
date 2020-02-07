@@ -12,4 +12,8 @@ class ColorsCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var colorsView: UIView!
     
+    func setView(_ colors: UIColor) {
+        colorsView.backgroundColor = colors
+        colorsView.setViewWithRoundCornerRadius(colorsView)
+    }
 }

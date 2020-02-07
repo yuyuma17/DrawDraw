@@ -10,10 +10,8 @@ import UIKit
 
 extension UIView {
     
-    func setViewWithBorderAndCircle(_ view: UIView) {
+    func setViewWithRoundCornerRadius(_ view: UIView) {
         view.layer.cornerRadius = view.frame.height / 2
-        view.layer.borderColor = UIColor.white.cgColor
-        view.layer.borderWidth = 1.5
     }
     
     func setViewWithFadeAwayAnimation(_ view: UIView) {
