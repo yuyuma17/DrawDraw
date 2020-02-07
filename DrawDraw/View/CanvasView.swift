@@ -33,19 +33,8 @@ class CanvasView: UIView {
         
         lines.forEach { (line) in
             
-            switch paintingBrushType {
-                
-            case .normal:
-                context.setStrokeColor(line.color.cgColor)
-                context.setShadow(offset: CGSize(width: 0, height: 0), blur: CGFloat(line.blur), color: line.shadow.cgColor)
-            case .blur:
-                context.setStrokeColor(line.color.cgColor)
-                context.setShadow(offset: CGSize(width: 0, height: 0), blur: CGFloat(line.blur), color: line.shadow.cgColor)
-            case .neon:
-                context.setStrokeColor(line.color.cgColor)
-                context.setShadow(offset: CGSize(width: 0, height: 0), blur: CGFloat(line.blur), color: line.shadow.cgColor)
-            }
-            
+            context.setStrokeColor(line.color.cgColor)
+            context.setShadow(offset: CGSize(width: 0, height: 0), blur: CGFloat(line.blur), color: line.shadow.cgColor)
             context.setLineWidth(CGFloat(line.width))
             context.setAlpha(CGFloat(line.alpha))
             
@@ -70,6 +59,14 @@ class CanvasView: UIView {
         if undoLines.count != 0 {
             paintingVC?.redoButton.isEnabled = false
             undoLines.removeAll()
+        }
+        
+        if paintingVC?.selectColorView.isHidden == false {
+            paintingVC?.view.setViewWithFadeAwayAnimation(paintingVC!.selectColorView)
+        }
+        
+        if paintingVC?.selectWidthAndAlphaView.isHidden == false {
+            paintingVC?.view.setViewWithFadeAwayAnimation(paintingVC!.selectWidthAndAlphaView)
         }
         
         lines.append(Line.init(color: brushColor, shadow: shadowColor, width: brushWidth, alpha: brushAlpha, blur: brushBlur, points: []))
@@ -128,16 +125,24 @@ class CanvasView: UIView {
         setNeedsDisplay()
     }
     
+    func setBrushWidth(width: Float) {
+        brushWidth = width
+    }
+    
+    func setBrushAlpha(alpha: Float) {
+        brushAlpha = alpha
+    }
+    
     func setBrushTypeToNormal() {
         paintingBrushType = .normal
         brushBlur = 0
-        brushColor = .black
+        brushColor = shadowColor
     }
     
     func setBrushTypeToBlur() {
         paintingBrushType = .blur
         brushBlur = brushWidth * 1.5
-        brushColor = .black
+        brushColor = shadowColor
     }
     
     func setBrushTypeToNeon(neonInnerColor: UIColor = .white) {
@@ -152,19 +157,12 @@ class CanvasView: UIView {
             
         case .normal:
             brushColor = color
+            shadowColor = color
         case .blur:
             brushColor = color
             shadowColor = color
         case .neon:
             shadowColor = color
         }
-    }
-    
-    func setBrushWidth(width: Float) {
-        brushWidth = width
-    }
-    
-    func setBrushAlpha(alpha: Float) {
-        brushAlpha = alpha
     }
 }
