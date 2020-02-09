@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Photos
 
 class PaintingViewController: UIViewController {
 
@@ -34,6 +35,10 @@ class PaintingViewController: UIViewController {
         selectWidthAndAlphaView.isHidden = true
         selectWidthAndAlphaView.alpha = 0
         view.setViewWithRoundCornerRadius(selectBrushColorButton)
+        
+        if PHPhotoLibrary.authorizationStatus() == .notDetermined {
+            PHPhotoLibrary.requestAuthorization({_ in})
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -119,10 +124,24 @@ class PaintingViewController: UIViewController {
     }
     
     @IBAction func saveScreenshotButtonPressed(_ sender: UIButton) {
-        showAlert(alertTitle: "Take a Screenshot?", alertMessage: nil, alertStyle: .alert, [alertAction("No", .default, nil), alertAction("Yes", .default, { [weak self] (_) in
-            guard let self = self else { return }
-            self.saveScreenshot()
-        })])
+        
+        switch PHPhotoLibrary.authorizationStatus() {
+        
+        case .notDetermined:
+            PHPhotoLibrary.requestAuthorization { [weak self] (status) in
+                guard let self = self else { return }
+                guard status == .authorized else { return }
+                self.showSaveScreenShotAlert()
+            }
+        case .restricted:
+            showOpenAuthSettingAlert()
+        case .denied:
+            showOpenAuthSettingAlert()
+        case .authorized:
+            showSaveScreenShotAlert()
+        @unknown default:
+            fatalError()
+        }
     }
 }
 
@@ -146,10 +165,7 @@ extension PaintingViewController {
     
     @objc private func errorHandler(_ image: UIImage, _ didFinishSavingWithError: NSError?, _ contextInfo: UnsafeRawPointer) {
         if let error = didFinishSavingWithError {
-            // 權限處理
-            let ac = UIAlertController(title: "Save error", message: error.localizedDescription, preferredStyle: .alert)
-            ac.addAction(UIAlertAction(title: "OK", style: .default))
-            present(ac, animated: true)
+            showAlert(alertTitle: "Save error", alertMessage: error.localizedDescription, alertStyle: .alert, [alertAction("OK", .default, nil)])
         } else {
             showAlert(alertTitle: "Succeed!", alertMessage: "Successfully saved!", alertStyle: .alert, [alertAction("OK", .default, nil)])
         }
@@ -173,7 +189,7 @@ extension PaintingViewController {
         
         let activityVC = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
         
-        activityVC.excludedActivityTypes = [.assignToContact, .message, .mail, .addToReadingList, .openInIBooks, .markupAsPDF, .postToVimeo, .postToWeibo, .postToFlickr]
+        activityVC.excludedActivityTypes = [.assignToContact, .message, .mail, .addToReadingList, .openInIBooks, .markupAsPDF, .postToVimeo, .postToWeibo, .postToFlickr, .saveToCameraRoll]
         
         present(activityVC, animated: true, completion: nil)
         
@@ -182,12 +198,14 @@ extension PaintingViewController {
     
     private func showAlert(alertTitle: String, alertMessage: String?, alertStyle: UIAlertController.Style, _ actions: [UIAlertAction]) {
         
-        let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: alertStyle)
-        
-        for i in 0..<actions.count {
-            alert.addAction(actions[i])
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: alertStyle)
+            
+            for i in 0..<actions.count {
+                alert.addAction(actions[i])
+            }
+            self.present(alert, animated: true, completion: nil)
         }
-        present(alert, animated: true, completion: nil)
     }
     
     private func alertAction(_ actionTitle: String, _ actionStyle: UIAlertAction.Style, _ handler: ((UIAlertAction) -> Void)?) -> UIAlertAction {
@@ -195,6 +213,29 @@ extension PaintingViewController {
         let action = UIAlertAction(title: actionTitle, style: actionStyle, handler: handler)
         
         return action
+    }
+    
+    private func showSaveScreenShotAlert() {
+        showAlert(alertTitle: "Take a Screenshot?", alertMessage: nil, alertStyle: .alert, [alertAction("No", .default, nil), alertAction("Yes", .default, { [weak self] (_) in
+            guard let self = self else { return }
+            self.saveScreenshot()
+        })])
+    }
+    
+    private func showOpenAuthSettingAlert() {
+        showAlert(alertTitle: "Saving photos is not permitted", alertMessage: "Go to check the Setting", alertStyle: .alert, [alertAction("Cancel", .default, nil), alertAction("Setting", .default, { [weak self] (_) in
+            guard let self = self else { return }
+            self.openAuthSetting()
+        })])
+    }
+    
+    private func openAuthSetting() {
+        guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
+            return
+        }
+        if UIApplication.shared.canOpenURL(settingsUrl) {
+            UIApplication.shared.open(settingsUrl, completionHandler: nil)
+        }
     }
 }
 
