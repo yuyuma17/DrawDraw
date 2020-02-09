@@ -140,7 +140,18 @@ extension PaintingViewController {
     
     private func saveScreenshot() {
         if let screenshot = canvasScreenshot() {
-            UIImageWriteToSavedPhotosAlbum(screenshot, nil, nil, nil)
+            UIImageWriteToSavedPhotosAlbum(screenshot, self, #selector(errorHandler(_:_:_:)), nil)
+        }
+    }
+    
+    @objc private func errorHandler(_ image: UIImage, _ didFinishSavingWithError: NSError?, _ contextInfo: UnsafeRawPointer) {
+        if let error = didFinishSavingWithError {
+            // 權限處理
+            let ac = UIAlertController(title: "Save error", message: error.localizedDescription, preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
+        } else {
+            showAlert(alertTitle: "Succeed!", alertMessage: "Successfully saved!", alertStyle: .alert, [alertAction("OK", .default, nil)])
         }
     }
     
