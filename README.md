@@ -59,17 +59,7 @@ Function GIF Demo
 Painting Works Demo
 ==========================
 
-<img src="https://github.com/yuyuma17/DrawDraw/blob/master/Demo/1.png?raw=true" width=30%/>
-<img src="https://github.com/yuyuma17/DrawDraw/blob/master/Demo/2.png?raw=true" width=30%/>
-<img src="https://github.com/yuyuma17/DrawDraw/blob/master/Demo/3.png?raw=true" width=30%/>
-<img src="https://github.com/yuyuma17/DrawDraw/blob/master/Demo/4.png?raw=true" width=30%/>
-<img src="https://github.com/yuyuma17/DrawDraw/blob/master/Demo/5.png?raw=true" width=30%/>
-<img src="https://github.com/yuyuma17/DrawDraw/blob/master/Demo/6.png?raw=true" width=30%/>
-<img src="https://github.com/yuyuma17/DrawDraw/blob/master/Demo/7.png?raw=true" width=30%/>
-<img src="https://github.com/yuyuma17/DrawDraw/blob/master/Demo/8.png?raw=true" width=30%/>
-<img src="https://github.com/yuyuma17/DrawDraw/blob/master/Demo/9.png?raw=true" width=30%/>
-<img src="https://github.com/yuyuma17/DrawDraw/blob/master/Demo/10.png?raw=true" width=30%/>
-
+<img src="https://github.com/yuyuma17/DrawDraw/blob/master/Demo/1.png?raw=true" width=30%/> <img src="https://github.com/yuyuma17/DrawDraw/blob/master/Demo/2.png?raw=true" width=30%/> <img src="https://github.com/yuyuma17/DrawDraw/blob/master/Demo/3.png?raw=true" width=30%/> <img src="https://github.com/yuyuma17/DrawDraw/blob/master/Demo/4.png?raw=true" width=30%/> <img src="https://github.com/yuyuma17/DrawDraw/blob/master/Demo/5.png?raw=true" width=30%/> <img src="https://github.com/yuyuma17/DrawDraw/blob/master/Demo/6.png?raw=true" width=30%/> <img src="https://github.com/yuyuma17/DrawDraw/blob/master/Demo/7.png?raw=true" width=30%/> <img src="https://github.com/yuyuma17/DrawDraw/blob/master/Demo/8.png?raw=true" width=30%/> <img src="https://github.com/yuyuma17/DrawDraw/blob/master/Demo/9.png?raw=true" width=30%/> <img src="https://github.com/yuyuma17/DrawDraw/blob/master/Demo/10.png?raw=true" width=30%/>
 
 To Do
 ==========================
