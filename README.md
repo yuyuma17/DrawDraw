@@ -18,43 +18,43 @@ Function GIF Demo
 
 - **Normal Brush**
 
-<img src="https://github.com/yuyuma17/DrawDraw/blob/master/Function/normal.gif?raw=true" width=30%/>
+	<img src="https://github.com/yuyuma17/DrawDraw/blob/master/Function/normal.gif?raw=true" width=30%/>
 
 - **Blur Brush**
 
-<img src="https://github.com/yuyuma17/DrawDraw/blob/master/Function/blur.gif?raw=true" width=30%/>
+	<img src="https://github.com/yuyuma17/DrawDraw/blob/master/Function/blur.gif?raw=true" width=30%/>
 
 - **Neon Brush**
 
-<img src="https://github.com/yuyuma17/DrawDraw/blob/master/Function/neon.gif?raw=true" width=30%/>
+	<img src="https://github.com/yuyuma17/DrawDraw/blob/master/Function/neon.gif?raw=true" width=30%/>
 
 - **Adjust Color**
 
-<img src="https://github.com/yuyuma17/DrawDraw/blob/master/Function/rcolor.gif?raw=true" width=30%/>
+	<img src="https://github.com/yuyuma17/DrawDraw/blob/master/Function/rcolor.gif?raw=true" width=30%/>
 
 - **Adjust Width**
 
-<img src="https://github.com/yuyuma17/DrawDraw/blob/master/Function/rwidth.gif?raw=true" width=30%/>
+	<img src="https://github.com/yuyuma17/DrawDraw/blob/master/Function/rwidth.gif?raw=true" width=30%/>
 
 - **Adjust Opacity**
 
-<img src="https://github.com/yuyuma17/DrawDraw/blob/master/Function/ropacity.gif?raw=true" width=30%/>
+	<img src="https://github.com/yuyuma17/DrawDraw/blob/master/Function/ropacity.gif?raw=true" width=30%/>
 
 - **Undo、Redo**
 
-<img src="https://github.com/yuyuma17/DrawDraw/blob/master/Function/do.gif?raw=true" width=30%/>
+	<img src="https://github.com/yuyuma17/DrawDraw/blob/master/Function/do.gif?raw=true" width=30%/>
 
 - **Clear**
 
-<img src="https://github.com/yuyuma17/DrawDraw/blob/master/Function/clear.gif?raw=true" width=30%/>
+	<img src="https://github.com/yuyuma17/DrawDraw/blob/master/Function/clear.gif?raw=true" width=30%/>
 
 - **Save**
 
-<img src="https://github.com/yuyuma17/DrawDraw/blob/master/Function/save.gif?raw=true" width=30%/>
+	<img src="https://github.com/yuyuma17/DrawDraw/blob/master/Function/save.gif?raw=true" width=30%/>
 
 - **Share**
 
-<img src="https://github.com/yuyuma17/DrawDraw/blob/master/Function/share.gif?raw=true" width=30%/>
+	<img src="https://github.com/yuyuma17/DrawDraw/blob/master/Function/share.gif?raw=true" width=30%/>
 
 Painting Works Demo
 ==========================
